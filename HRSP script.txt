@@ -1,0 +1,92 @@
+-------------------------------------------R3--------------------------------------------------------
+int g0/1.2
+standby 1 ip 172.16.0.3
+standby 1 preempt
+standby 1 priority 150
+
+int g0/1.3 ip 172.16.1.3
+standby 2
+standby 2 preempt
+standby 2 priority 150
+
+int g0/1.4
+standby 4 ip 172.16.1.35
+standby 4 preempt
+standby 4 priority 150
+
+int g0/1.5
+standby 5 ip 172.16.1.67
+standby 5 preempt
+standby 5 priority 150
+
+int g0/1.6
+standby 6 ip 172.16.1.99
+standby 6 preempt
+standby 6 priority 150
+
+int g0/1.7
+standby 7 ip 172.16.1.131
+standby 7 preempt
+standby 7 priority 150
+
+int g0/1.8
+standby 8 ip 172.16.1.147
+standby 8 preempt
+standby 8 priority 150
+
+int g0/1.9
+standby 9 ip 172.16.1.163
+standby 9 preempt
+standby 9 priority 150
+
+int g0/1.10
+standby 10 ip 172.16.1.171
+standby 10 preempt
+standby 10 priority 150
+
+-------------------------------------------R2--------------------------------------------------------
+int g0/1.2
+standby 1 ip 172.16.0.3
+standby 1 preempt
+
+int g0/1.3 ip 172.16.1.3
+standby 2
+standby 2 preempt
+
+int g0/1.4
+standby 4 ip 172.16.1.35
+standby 4 preempt
+
+
+int g0/1.5
+standby 5 ip 172.16.1.67
+standby 5 preempt
+
+int g0/1.6
+standby 6 ip 172.16.1.99
+standby 6 preempt
+
+int g0/1.7
+standby 7 ip 172.16.1.131
+standby 7 preempt
+
+int g0/1.8
+standby 8 ip 172.16.1.147
+standby 8 preempt
+standby 8 priority 150
+
+int g0/1.9
+standby 9 ip 172.16.1.163
+standby 9 preempt
+
+int g0/1.10
+standby 10 ip 172.16.1.171
+standby 10 preempt
+
+
+
+
+
+
+
+

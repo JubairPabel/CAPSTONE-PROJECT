@@ -1,0 +1,2 @@
+$txtrequest = New-ExchangeCertificate -PrivateKeyExportable $True -GenerateRequest [-FriendlyName <DescriptiveName>] -SubjectName C=<CountryOrRegion>[,S=<StateOrProvince>,L=<LocalityOrCity>,O=<Organization>,OU=<Department>],CN=<HostNameOrFQDN> [-DomainName <Host1>,<Host2>...] [-KeySize <1024 | 2048 | 4096>] [-Server <ServerIdentity>]
+[System.IO.File]::WriteAllBytes('<FilePathOrUNCPath>\<FileName>.req', [System.Text.Encoding]::Unicode.GetBytes($txtrequest))

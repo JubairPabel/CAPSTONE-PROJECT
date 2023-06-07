@@ -1,0 +1,189 @@
+vlan 2
+name Student
+vlan 3
+name Teacher
+vlan 4
+name Finance
+vlan 5
+name HR
+vlan 6
+name DepartmentHead
+vlan 7
+name Marketing
+vlan 8
+name IT
+vlan 9 
+name Principal
+vlan 10 
+name servers
+vlan 99
+name Native
+vlan 100
+name ParkingLot
+
+
+int range f0/15-24
+switchport mode access
+switchport access vlan 2
+description Assigned Student Vlan
+int range f0/11-14
+switchport mode access
+switchport access vlan 3
+description Assigned Teacher Vlan
+int f0/9
+switchport mode access
+switchport access vlan 4
+description Assigned Finance Vlan
+int f0/8
+switchport mode access
+switchport access vlan 5
+description Assigned HR Vlan
+int f0/3
+switchport mode access
+switchport access vlan 6
+description Assigned Deparment Head Vlan
+int range f0/6-7
+switchport mode access
+switchport access vlan 7
+description Assigned Marketing Vlan
+int range f0/10
+switchport mode access
+switchport access vlan 8
+description Assigned IT Vlan
+int f0/4
+switchport mode access
+switchport access vlan 9
+description Assigned Principal Vlan
+
+
+int range f0/1-2
+channel-group 1 mode active
+int p01
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 2,3,4,5,6,7,8,9,10,99,100
+no shut
+
+
+
+------------------R3------------------
+
+int s0/0/0
+description Connected to S0/0/1 of R1
+ip address 172.16.1.182 255.255.255.252
+no shut 
+int g0/0
+description Connected to g0/0 of R2
+ip address 172.16.1.186 255.255.255.252
+no shut 
+int g0/1.2
+description encapsulated on student vlan 2
+encapsulation dot1q 2
+ip address 172.16.0.1 255.255.255.0
+int g0/1.3
+description encapsulated on teacher vlan 3
+encapsulation dot1q 3
+ip address 172.16.1.1 255.255.255.224
+int g0/1.4
+description encapsulated on Finance vlan 4
+encapsulation dot1q 4
+ip address 172.16.1.33 255.255.255.224
+int g0/1.5
+description encapsulated on HR vlan 5
+encapsulation dot1q 5
+ip address 172.16.1.65 255.255.255.224
+int g0/1.6
+description encapsulated on DepartmentHead vlan 6
+encapsulation dot1q 6
+ip address 172.16.1.97 255.255.255.224
+int g0/1.7
+description encapsulated on Marketing vlan 7
+encapsulation dot1q 7
+ip address 172.16.1.129 255.255.255.240
+int g0/1.8
+description encapsulated on IT vlan 8
+encapsulation dot1q 8
+ip address 172.16.1.145 255.255.255.240
+int g0/1.9
+description encapsulated on Principal vlan 9
+encapsulation dot1q 9
+ip address 172.16.1.161 255.255.255.248
+int g0/1.10
+description encapsulated on Servers vlan 10
+encapsulation dot1q 10
+ip address 172.16.1.169 255.255.255.248
+int g0/1.99
+description encapsulated on Native vlan 99
+encapsulation dot1q native vlan 99
+
+-----------------------R2---------------------------------------------------------------------------------------------------------------------
+
+
+
+hostname R2
+line console 0
+password Dites01@@##
+login
+logging synchronous
+exit
+line console 0
+exec-timeout 5
+exit
+no ip domain-lookup
+enable secret Dites01@###
+service password-encryption
+banner motd "Warning! Authorized Access Only! Persons caught Unauthorized will face a lawsuit!"
+ip domain name dites.ca
+
+int s0/0/0
+description Connected to S0/0/0 of R1
+ip address 172.16.1.178 255.255.255.252
+no shut 
+int g0/0
+description Connected to g0/0 of R3
+ip address 172.16.1.185 255.255.255.252
+no shut 
+int g0/1.2
+description encapsulated on student vlan 2
+encapsulation dot1q 2
+ip address 172.16.0.2 255.255.255.0
+int g0/1.3
+description encapsulated on teacher vlan 3
+encapsulation dot1q 3
+ip address 172.16.1.2 255.255.255.224
+int g0/1.4
+description encapsulated on Finance vlan 4
+encapsulation dot1q 4
+ip address 172.16.1.34 255.255.255.224
+int g0/1.5
+description encapsulated on HR vlan 5
+encapsulation dot1q 5
+ip address 172.16.1.66 255.255.255.224
+int g0/1.6
+description encapsulated on DepartmentHead vlan 6
+encapsulation dot1q 6
+ip address 172.16.1.98 255.255.255.224
+int g0/1.7
+description encapsulated on Marketing vlan 7
+encapsulation dot1q 7
+ip address 172.16.1.130 255.255.255.240
+int g0/1.8
+description encapsulated on IT vlan 8
+encapsulation dot1q 8
+ip address 172.16.1.146 255.255.255.240
+int g0/1.9
+description encapsulated on Principal vlan 9
+encapsulation dot1q 9
+ip address 172.16.1.162 255.255.255.248
+int g0/1.10
+description encapsulated on Servers vlan 10
+encapsulation dot1q 10
+ip address 172.16.1.170 255.255.255.248
+int g0/1.99
+description encapsulated on Native vlan 99
+encapsulation dot1q 99 native
+
+
+
+
+
